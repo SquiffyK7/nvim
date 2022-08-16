@@ -9,12 +9,7 @@ return require('packer').startup({ function(use)
 
   use 'navarasu/onedark.nvim'
 
-  use {
-    'nvim-lualine/lualine.nvim',
-    config = function()
-      require('lualine').setup()
-    end
-  }
+  use { 'tamton-aquib/staline.nvim' }
 
   use {
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -22,9 +17,6 @@ return require('packer').startup({ function(use)
       { 'nvim-lua/plenary.nvim' },
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
     },
-    config = function()
-      require('telescope').load_extension('live_grep_args')
-    end
   }
 
   use {
@@ -104,7 +96,6 @@ return require('packer').startup({ function(use)
       }
     end
   }
-
 end,
   config = {
     display = {
