@@ -44,6 +44,10 @@ onedark.setup {
     DiagnosticHint = { fg = '$blue' },
     DiagnosticInfo = { fg = '$cyan' },
     DiagnosticWarn = { fg = '$yellow' },
+    DiagnosticVirtualTextError = { fg = '$red' },
+    DiagnosticVirtualTextHint = { fg = '$blue' },
+    DiagnosticVirtualTextInfo = { fg = '$cyan' },
+    DiagnosticVirtualTextWarn = { fg = '$yellow' },
 
     FloatBorder = { bg = '$none' },
     NormalFloat = { bg = '$none' },

@@ -10,3 +10,6 @@ require "user.tree"
 require "user.treesitter"
 require "user.autopairs"
 require "user.bufferline"
+require "user.scrollbar"
+
+require("scrollbar").setup()

@@ -74,6 +74,37 @@ return require('packer').startup({ function(use)
 
   use 'tpope/vim-surround'
 
+  use {
+    "stevearc/dressing.nvim",
+    config = function()
+      require("dressing").setup {}
+    end,
+  }
+
+  use {
+    "ziontee113/icon-picker.nvim",
+    config = function()
+      require("icon-picker").setup {
+        disable_legacy_commands = false
+      }
+    end,
+  }
+
+
+  use { 'kevinhwang91/nvim-hlslens' }
+  use { 'petertriho/nvim-scrollbar' }
+
+  use {
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+
 end,
   config = {
     display = {
