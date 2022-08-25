@@ -19,7 +19,7 @@ return require("nvim-tree").setup {
   on_attach = "disable", -- function(bufnr). If nil, will use the deprecated mapping strategy
   remove_keymaps = false, -- boolean (disable totally or not) or list of key (lhs)
   view = {
-    adaptive_size = false,
+    adaptive_size = true,
     centralize_selection = true,
     width = 30,
     height = 30,
@@ -50,7 +50,7 @@ return require("nvim-tree").setup {
   },
   renderer = {
     add_trailing = false,
-    group_empty = false,
+    group_empty = true,
     highlight_git = false,
     full_name = false,
     highlight_opened_files = "none",
@@ -156,7 +156,7 @@ return require("nvim-tree").setup {
       exclude = {},
     },
     open_file = {
-      quit_on_open = false,
+      quit_on_open = true,
       resize_window = true,
       window_picker = {
         enable = false,

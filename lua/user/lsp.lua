@@ -21,7 +21,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
   vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
   vim.keymap.set('n', '<space>wl', function()
@@ -30,7 +30,8 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  -- vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', 'gr', ":lua require('telescope.builtin').lsp_references()<CR>", bufopts)
   -- vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
 
@@ -80,6 +81,7 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
+
 vim.diagnostic.config {
   virtual_text = false,
   signs = {
@@ -92,8 +94,25 @@ vim.diagnostic.config {
   --   focusable = false,
   --   style = "minimal",
     border = "rounded",
-    source = "always",
+    source = false,
     header = "",
     prefix = "",
+    -- prefix = function(diagnostic)
+    --   return diagnostic.source
+    -- end,
+    max_width = 80,
+
+    format = function(diagnostic)
+      if diagnostic.source == 'eslint' then
+        return string.format(
+          ' %s \n\n %s(%s) ',
+          diagnostic.message,
+          diagnostic.source,
+          -- shows the name of the rule
+          diagnostic.user_data.lsp.code
+        )
+      end
+      return string.format(' %s \n\n %s', diagnostic.message, diagnostic.source)
+    end,
   },
 }

@@ -15,11 +15,10 @@ require("scrollbar").setup {
         Search = {
             text = { "-", "=" },
             priority = 0,
-            -- color = nil,
+            color = nil,
             cterm = nil,
             -- highlight = "Search",
-            -- highlight = "DiagnosticVirtualTextError",
-            color = "#e6cfa1"
+            highlight = "DiagnosticVirtualTextError",
         },
         Error = {
             text = { "-", "=" },
@@ -95,5 +94,5 @@ require("hlslens").setup {
 }
 
 require('hlslens').setup {
-    auto_enable = false,
+    auto_enable = true,
 }

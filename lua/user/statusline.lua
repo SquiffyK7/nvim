@@ -1,4 +1,8 @@
-local colors = require("onedark.palette").warm
+local extract_hl = function(hl, fore)
+  return ("#%06x"):format(
+    vim.api.nvim_get_hl_by_name(hl, true)[fore and 'background' or 'foreground'] or 255
+  )
+end
 
 local get_filename = function()
   return vim.fn.expand('%:p:.')
@@ -8,7 +12,7 @@ local divider = '- | '
 
 require('staline').setup {
 	defaults = {
-        expand_null_ls = false,  -- This expands out all the null-ls sources to be shown
+    expand_null_ls = false,  -- This expands out all the null-ls sources to be shown
 		left_separator  = "",
 		right_separator = "",
 		full_path       = false,
@@ -27,10 +31,10 @@ require('staline').setup {
         null_ls_symbol = "",          -- A symbol to indicate that a source is coming from null-ls
 	},
 	mode_colors = {
-		n = colors.yellow,
-		i = colors.yellow,
-		c = colors.yellow,
-		v = colors.yellow,
+		n = extract_hl("Staline"),
+		i = extract_hl("Staline"),
+		c = extract_hl("Staline"),
+		v = extract_hl("Staline"),
 	},
 	mode_icons = {
 		n = " ",
@@ -39,7 +43,7 @@ require('staline').setup {
 		v = " ",   -- etc..
 	},
 	sections = {
-		left = { '- ', '-mode', '-|', '-cwd', 'left_sep_double', ' ', { 'StalineFilename', get_filename } },
+		left = { '- ', '-mode', '-|', '-cwd', 'left_sep_double', ' ', { 'Staline', get_filename } },
     mid = { },
 		right = { 'lsp', 'right_sep_double', '- ', '-lsp_name', divider, '-branch', divider, '-line_column' },
 	},
@@ -54,5 +58,3 @@ require('staline').setup {
 		Hint="",
 	},
 }
-
-vim.api.nvim_command(string.format("highlight StalineFilename guifg=%s guibg=%s", colors.yellow, colors.none))

@@ -25,10 +25,13 @@ onedark.setup {
 
   -- Custom Highlights --
   colors = {
-    bright_orange = "#ff8800", -- define a new color
+
   }, -- Override default colors
   highlights = {
     Directory = { fg = '$green' },
+
+    Staline = { fg = '$yellow' },
+    StalineFilename = { fg = '$red' },
 
     NvimTreeFolderName = { fg = '$green', fmt = 'bold' },
     -- NvimTreeRootFolder = { fg = '$green' },
@@ -37,17 +40,24 @@ onedark.setup {
     NvimTreeOpenedFolderName = { fg = '$green', fmt = 'bold' },
 
     NvimTreeNormal = { bg = '$bg_d' },
-    NvimTreeVertSplit = { bg = '$bg_d' },
+    NvimTreeWinSeparator = { bg = '$none', fg = '$bg3' },
+
     NvimTreeEndOfBuffer = { bg = '$bg_d' },
+
+    TelescopeBorder = { fg = '$yellow' },
+    TelescopePromptPrefix = { fg = '$yellow' },
+    TelescopePromptBorder = { fg = '$yellow' },
+    TelescopeResultsBorder = { fg = '$yellow' },
+    TelescopePreviewBorder = { fg = '$yellow' },
 
     DiagnosticError = { fg = '$red' },
     DiagnosticHint = { fg = '$blue' },
     DiagnosticInfo = { fg = '$cyan' },
-    DiagnosticWarn = { fg = '$yellow' },
+    DiagnosticWarn = { fg = '$orange' },
     DiagnosticVirtualTextError = { fg = '$red' },
     DiagnosticVirtualTextHint = { fg = '$blue' },
     DiagnosticVirtualTextInfo = { fg = '$cyan' },
-    DiagnosticVirtualTextWarn = { fg = '$yellow' },
+    DiagnosticVirtualTextWarn = { fg = '$orange' },
 
     FloatBorder = { bg = '$none' },
     NormalFloat = { bg = '$none' },

@@ -1,3 +1,5 @@
+local colors = require("onedark.palette").warm
+
 require('bufferline').setup {
   options = {
     mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -10,7 +12,7 @@ require('bufferline').setup {
 
   highlights = {
     fill = {
-      bg = "#242628",
+      bg = colors.bg_d,
     },
     buffer_selected = {
       bold = true,
