@@ -35,8 +35,4 @@ vim.opt.background = 'dark'
 vim.cmd [[
 " Disable tmux navigator when zooming the Vim pane
 let g:tmux_navigator_disable_when_zoomed = 1
-
-" prettier on save
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
 ]]

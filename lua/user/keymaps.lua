@@ -13,8 +13,6 @@ vim.keymap.set('n', '<leader>b', ":lua require('telescope.builtin').buffers()<CR
 
 vim.keymap.set('n', '<leader>R', ':luafile ~/.config/nvim/init.lua<CR>', opts)
 
-vim.keymap.set('n', '<leader>p', ':PrettierAsync<CR>', opts)
-
 vim.keymap.set('n', 'H', ':BufferLineCyclePrev<CR>', opts)
 vim.keymap.set('n', 'L', ':BufferLineCycleNext<CR>', opts)
 

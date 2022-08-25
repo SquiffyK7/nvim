@@ -51,11 +51,11 @@ onedark.setup {
     DiagnosticError = { fg = '$red' },
     DiagnosticHint = { fg = '$blue' },
     DiagnosticInfo = { fg = '$cyan' },
-    DiagnosticWarn = { fg = '$orange' },
+    -- DiagnosticWarn = { fg = '$orange' },
     DiagnosticVirtualTextError = { fg = '$red' },
     DiagnosticVirtualTextHint = { fg = '$blue' },
     DiagnosticVirtualTextInfo = { fg = '$cyan' },
-    DiagnosticVirtualTextWarn = { fg = '$orange' },
+    -- DiagnosticVirtualTextWarn = { fg = '$orange' },
 
     FloatBorder = { bg = '$none' },
     NormalFloat = { bg = '$none' },

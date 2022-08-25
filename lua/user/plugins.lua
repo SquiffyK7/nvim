@@ -33,12 +33,6 @@ return require('packer').startup {
       'neovim/nvim-lspconfig',
     }
 
-    use {
-      'prettier/vim-prettier',
-      run = 'yarn install --frozen-lockfile',
-      ft = { 'javascript', 'typescript', 'css', 'less', 'scss', 'graphql', 'markdown', 'vue', 'html' },
-    }
-
     use { 'akinsho/bufferline.nvim', tag = 'v2.*', requires = 'kyazdani42/nvim-web-devicons' }
 
     use {
