@@ -1,4 +1,4 @@
-local onedark = require('onedark')
+local onedark = require 'onedark'
 
 onedark.setup {
   -- Main options --
@@ -20,13 +20,11 @@ onedark.setup {
     keywords = 'none',
     functions = 'none',
     strings = 'none',
-    variables = 'none'
+    variables = 'none',
   },
 
   -- Custom Highlights --
-  colors = {
-
-  }, -- Override default colors
+  colors = {}, -- Override default colors
   highlights = {
     Directory = { fg = '$green' },
 
@@ -78,7 +76,6 @@ onedark.setup {
     javascriptTSTagAttribute = { fg = '$orange' },
     javascriptTSTagDelimiter = { fg = '$cyan' },
     javascriptTSVariable = { fg = '$fg' },
-
   }, -- Override highlight groups
 
   -- Plugins Config --

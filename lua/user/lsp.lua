@@ -1,8 +1,8 @@
-require("nvim-lsp-installer").setup {}
+require('nvim-lsp-installer').setup {}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-local opts = { noremap=true, silent=true }
+local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>i', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
@@ -16,7 +16,7 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -40,47 +40,53 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
-
 -- configure settings: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 require('lspconfig')['tsserver'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    on_attach(client, bufnr)
+  end,
+
+  flags = lsp_flags,
 }
 
 require('lspconfig')['eslint'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
+  on_attach = on_attach,
+  flags = lsp_flags,
 }
 
 require('lspconfig')['sumneko_lua'].setup {
-    on_attach = on_attach,
-    flags = lsp_flags,
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
-        workspace = {
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true, -- what this?
-            [vim.fn.stdpath("config") .. "/lua"] = true, -- what this?
-          },
+  on_attach = function(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    on_attach(client, bufnr)
+  end,
+
+  flags = lsp_flags,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = {
+          [vim.fn.expand '$VIMRUNTIME/lua'] = true, -- what this?
+          [vim.fn.stdpath 'config' .. '/lua'] = true, -- what this?
         },
       },
     },
+  },
 }
 
 local signs = {
-  { name = "DiagnosticSignError", text = "" },
-  { name = "DiagnosticSignWarn", text = "" },
-  { name = "DiagnosticSignHint", text = "" },
-  { name = "DiagnosticSignInfo", text = "" },
+  { name = 'DiagnosticSignError', text = '' },
+  { name = 'DiagnosticSignWarn', text = '' },
+  { name = 'DiagnosticSignHint', text = '' },
+  { name = 'DiagnosticSignInfo', text = '' },
 }
 
 for _, sign in ipairs(signs) do
-  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = '' })
 end
-
 
 vim.diagnostic.config {
   virtual_text = false,
@@ -91,12 +97,12 @@ vim.diagnostic.config {
   -- underline = true,
   -- severity_sort = true,-
   float = {
-  --   focusable = false,
-  --   style = "minimal",
-    border = "rounded",
+    --   focusable = false,
+    --   style = "minimal",
+    border = 'rounded',
     source = false,
-    header = "",
-    prefix = "",
+    header = '',
+    prefix = '',
     -- prefix = function(diagnostic)
     --   return diagnostic.source
     -- end,
