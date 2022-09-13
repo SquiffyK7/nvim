@@ -27,3 +27,7 @@ vim.keymap.set('n', 'XL', ':BufferLineCloseLeft<CR>', opts)
 vim.keymap.set('n', 'XR', ':BufferLineCloseRight<CR>', opts)
 vim.keymap.set('n', 'XO', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>', opts)
 vim.keymap.set('n', 'XA', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>:Bdelete!<CR>', opts)
+
+vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>', opts)
+vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', opts)
+vim.keymap.set('n', '<leader>dh', ':DiffviewFileHistory %%<CR>', opts)

@@ -30,6 +30,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.signcolumn = 'yes' -- always show sign column
 vim.opt.scrolloff = 8 -- scroll when cursor is 8 characters away from top / bottom
+vim.opt.fillchars:append 'diff:╱'
 
 vim.cmd [[
 " Disable tmux navigator when zooming the Vim pane
