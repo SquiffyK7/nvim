@@ -8,8 +8,6 @@ return require('packer').startup {
 
     use 'christoomey/vim-tmux-navigator'
 
-    use 'navarasu/onedark.nvim'
-
     use { 'tamton-aquib/staline.nvim' }
 
     use {
@@ -118,6 +116,9 @@ return require('packer').startup {
     }
 
     use { 'lambdalisue/suda.vim' }
+
+    use 'rebelot/kanagawa.nvim'
+    use { 'catppuccin/nvim', as = 'catppuccin' }
   end,
   config = {
     display = {
