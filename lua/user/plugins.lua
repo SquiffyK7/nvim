@@ -116,6 +116,8 @@ return require('packer').startup {
       'jose-elias-alvarez/null-ls.nvim',
       requires = 'nvim-lua/plenary.nvim',
     }
+
+    use { 'lambdalisue/suda.vim' }
   end,
   config = {
     display = {
