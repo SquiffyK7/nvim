@@ -1,4 +1,4 @@
-local colors = require('onedark.palette').warm
+local kanagawa = require('kanagawa.colors').setup()
 
 require('bufferline').setup {
   options = {
@@ -11,11 +11,10 @@ require('bufferline').setup {
   },
 
   highlights = {
-    fill = {
-      bg = colors.bg_d,
+    tab_selected = {
+      fg = kanagawa.fujiWhite,
     },
     buffer_selected = {
-      bold = true,
       italic = false,
     },
   },
