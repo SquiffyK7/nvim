@@ -1,60 +1,69 @@
-local extract_hl = function(hl, fore)
-  return ('#%06x'):format(vim.api.nvim_get_hl_by_name(hl, true)[fore and 'background' or 'foreground'] or 255)
-end
+-- https://github.com/nvim-lualine/lualine.nvim
 
-local get_filename = function()
-  return vim.fn.expand '%:p:.'
-end
+require('lualine').setup {
+  options = {
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = {
+      statusline = {},
 
-local divider = '- | '
-
-require('staline').setup {
-  defaults = {
-    expand_null_ls = false, -- This expands out all the null-ls sources to be shown
-    left_separator = '',
-    right_separator = '',
-    full_path = false,
-    line_column = '%l:%c   %p%% ', -- `:h stl` to see all flags.
-
-    fg = '#000000', -- Foreground text color.
-    bg = 'none', -- Default background is transparent.
-    -- bg              = "#242628",
-    inactive_color = '#303030',
-    inactive_bgcolor = 'none',
-    true_colors = true, -- true lsp colors.
-    font_active = 'none', -- "bold", "italic", "bold,italic", etc
-
-    mod_symbol = '  ',
-    lsp_client_symbol = '  ',
-    branch_symbol = ' ',
-    cool_symbol = '', -- Change this to override default OS icon.
-    null_ls_symbol = '', -- A symbol to indicate that a source is coming from null-ls
-  },
-  mode_colors = {
-    n = extract_hl 'Staline',
-    i = extract_hl 'Staline',
-    c = extract_hl 'Staline',
-    v = extract_hl 'Staline',
-  },
-  mode_icons = {
-    n = ' ',
-    i = ' ',
-    c = ' ',
-    v = ' ', -- etc..
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = true,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    },
   },
   sections = {
-    left = { '- ', '-mode', '-|', '-cwd', 'left_sep_double', ' ', { 'Staline', get_filename } },
-    mid = {},
-    right = { 'lsp', 'right_sep_double', '- ', '-lsp_name', divider, '-branch', divider, '-line_column' },
+    lualine_a = {
+      {
+        'mode',
+        fmt = function(mode)
+          -- c = ' ',
+          local modeIconMap = {
+            NORMAL = '',
+            INSERT = '',
+            VISUAL = '',
+            ['V-LINE'] = '',
+            ['V-BLOCK'] = '',
+          }
+          return modeIconMap[mode] or mode
+        end,
+      },
+    },
+    lualine_b = {},
+    lualine_c = {
+      {
+        'filename',
+        file_status = true, -- Displays file status (readonly status, modified status)
+        newfile_status = false, -- Display new file status (new file means no write after created)
+        path = 1, -- 0: Just the filename
+        -- 1: Relative path
+        -- 2: Absolute path
+        -- 3: Absolute path, with tilde as the home directory
+
+        shorting_target = 40, -- Shortens path to leave 40 spaces in the window
+        -- for other components. (terrible name, any suggestions?)
+        symbols = {
+          modified = '[+]', -- Text to show when the file is modified.
+          readonly = '[-]', -- Text to show when the file is non-modifiable or readonly.
+          unnamed = '[No Name]', -- Text to show for unnamed buffers.
+          newfile = '[New]', -- Text to show for new created file before first writting
+        },
+      },
+    },
+    lualine_x = { 'diagnostics', 'diff', 'branch' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' },
   },
-  special_table = {
-    NvimTree = { 'NvimTree', ' ' },
-    packer = { 'Packer', ' ' }, -- etc
-  },
-  lsp_symbols = {
-    Error = ' ',
-    Info = ' ',
-    Warn = ' ',
-    Hint = '',
-  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {},
 }

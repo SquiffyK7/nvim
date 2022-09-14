@@ -8,7 +8,10 @@ return require('packer').startup {
 
     use 'christoomey/vim-tmux-navigator'
 
-    use { 'tamton-aquib/staline.nvim' }
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    }
 
     use {
       'nvim-telescope/telescope.nvim',
