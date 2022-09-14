@@ -15,6 +15,7 @@ require('null-ls').setup {
       },
     },
     require('null-ls').builtins.formatting.prettier,
+    require('null-ls').builtins.formatting.xmllint,
   },
   on_attach = function(client, bufnr)
     if client.supports_method 'textDocument/formatting' then
