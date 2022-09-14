@@ -118,6 +118,17 @@ return require('packer').startup {
 
     use 'rebelot/kanagawa.nvim'
     use { 'catppuccin/nvim', as = 'catppuccin' }
+
+    use {
+      'gbprod/cutlass.nvim',
+      config = function()
+        require('cutlass').setup {
+          cut_key = 'm',
+          override_del = true,
+          exclude = {},
+        }
+      end,
+    }
   end,
   config = {
     display = {
