@@ -1,8 +1,6 @@
 local opts = { noremap = true, silent = true }
 
--- Remap space as leader key vim.keymap.set("", "<Space>", "<Nop>", opts) -- what was space before?
 vim.g.mapleader = ' '
--- vim.g.maplocalleader = " "
 
 vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
 
@@ -26,4 +24,13 @@ vim.keymap.set('n', 'XA', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>:Bde
 
 vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>', opts)
 vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', opts)
-vim.keymap.set('n', '<leader>dh', ':DiffviewFileHistory %%<CR>', opts)
+vim.keymap.set('n', 'gl', ':DiffviewFileHistory %%<CR>', opts)
+
+-- https://vim.fandom.com/wiki/Alternative_tab_navigation
+vim.keymap.set('n', 'th', ':tabfirst<CR>', opts)
+vim.keymap.set('n', 'tj', ':tabprev<CR>', opts)
+vim.keymap.set('n', 'tk', ':tabnext<CR>', opts)
+vim.keymap.set('n', 'tl', ':tablast<CR>', opts)
+vim.keymap.set('n', 'tn', ':tabnew<CR>', opts)
+vim.keymap.set('n', 'tc', ':tabclose<CR>', opts)
+vim.keymap.set('n', 'tm', ':tabmove<Space>', opts)
