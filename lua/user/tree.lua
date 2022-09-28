@@ -22,7 +22,6 @@ return require('nvim-tree').setup {
     adaptive_size = true,
     centralize_selection = true,
     width = 30,
-    height = 30,
     hide_root_folder = false,
     side = 'left',
     preserve_window_proportions = false,
@@ -140,7 +139,7 @@ return require('nvim-tree').setup {
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     show_on_dirs = true,
     timeout = 400,
   },
