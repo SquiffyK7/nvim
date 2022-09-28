@@ -23,7 +23,6 @@ vim.keymap.set('n', 'XO', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>', o
 vim.keymap.set('n', 'XA', ':BufferLineCloseLeft<CR>:BufferLineCloseRight<CR>:Bdelete!<CR>', opts)
 
 vim.keymap.set('n', '<leader>do', ':DiffviewOpen<CR>', opts)
-vim.keymap.set('n', '<leader>dc', ':DiffviewClose<CR>', opts)
 vim.keymap.set('n', 'gl', ':DiffviewFileHistory %%<CR>', opts)
 
 -- https://vim.fandom.com/wiki/Alternative_tab_navigation
