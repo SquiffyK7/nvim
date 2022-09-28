@@ -28,7 +28,7 @@ vim.opt.tabstop = 2 -- research
 vim.opt.cursorline = true -- highlight line of cursor
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.signcolumn = 'yes' -- always show sign column
+vim.opt.signcolumn = 'yes:2' -- always show sign column and allow 2 characters
 vim.opt.scrolloff = 8 -- scroll when cursor is 8 characters away from top / bottom
 vim.opt.fillchars:append 'diff:╱'
 
