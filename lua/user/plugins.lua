@@ -50,6 +50,7 @@ return require('packer').startup {
     }
 
     use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/cmp-nvim-lsp'
 
     use 'windwp/nvim-autopairs'
