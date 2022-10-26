@@ -93,7 +93,7 @@ return require('packer').startup {
       'booperlv/nvim-gomove',
       config = function()
         require('gomove').setup {
-          map_defaults = true,
+          map_defaults = false,
           reindent = true,
           undojoin = true,
           move_past_end_col = false,
