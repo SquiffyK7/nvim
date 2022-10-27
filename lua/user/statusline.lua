@@ -32,6 +32,8 @@ require('lualine').setup {
             VISUAL = '',
             ['V-LINE'] = '',
             ['V-BLOCK'] = '',
+            COMMAND = '',
+            TERMINAL = '',
           }
           return modeIconMap[mode] or mode
         end,
