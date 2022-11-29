@@ -6,6 +6,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set('n', '<space>i', vim.diagnostic.open_float, opts)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
 -- Use an on_attach function to only map the following keys
@@ -100,6 +101,8 @@ vim.diagnostic.config {
   -- update_in_insert = true,
   -- underline = true,
   -- severity_sort = true,-
+  --
+
   float = {
     --   focusable = false,
     --   style = "minimal",
@@ -126,3 +129,11 @@ vim.diagnostic.config {
     end,
   },
 }
+
+require('nvim-lsp-installer').setup {
+  ui = {
+    border = 'rounded',
+  },
+}
+
+require('lspconfig.ui.windows').default_options.border = 'rounded'
