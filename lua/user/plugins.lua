@@ -133,6 +133,13 @@ return require('packer').startup {
         }
       end,
     }
+
+    use {
+      'Fymyte/rasi.vim',
+      ft = { 'rasi' },
+      run = ':TSInstall rasi',
+      requires = { 'ap/vim-css-color', 'nvim-treesitter/nvim-treesitter' },
+    }
   end,
   config = {
     display = {
