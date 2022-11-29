@@ -1,36 +1,50 @@
 local cmp = require 'cmp'
 
---   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = '',
-  Method = 'm',
+  Method = '',
   Function = '',
-  Constructor = '',
-  Field = '',
-  Variable = '',
-  Class = '',
+  Constructor = '',
+  Field = 'ﰠ',
+  Variable = '',
+  Class = 'ﴯ',
   Interface = '',
   Module = '',
-  Property = '',
-  Unit = '',
+  Property = 'ﰠ',
+  Unit = '塞',
   Value = '',
   Enum = '',
   Keyword = '',
-  Snippet = '',
+  Snippet = '',
   Color = '',
   File = '',
-  Reference = '',
+  Reference = '',
   Folder = '',
   EnumMember = '',
-  Constant = '',
-  Struct = '',
+  Constant = '',
+  Struct = 'פּ',
   Event = '',
   Operator = '',
-  TypeParameter = '',
+  TypeParameter = '',
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
 
 cmp.setup {
+  view = {
+    entries = 'custom', -- can be "custom", "wildmenu" or "native"
+  },
+  formatting = {
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = kind_icons[vim_item.kind]
+
+      if entry.completion_item.detail ~= nil and entry.completion_item.detail ~= '' then
+        vim_item.menu = string.sub(entry.completion_item.detail, 0, 40) -- might be able to truncate with max-width instead?
+      end
+      return vim_item
+    end,
+  },
+
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
@@ -48,16 +62,17 @@ cmp.setup {
     -- },
   },
   mapping = cmp.mapping.preset.insert {
-    ['<C-k>'] = cmp.mapping.select_prev_item(),
-    ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-s>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
   sources = cmp.config.sources {
     { name = 'nvim_lsp' },
+  },
+  experimental = {
+    ghost_text = true,
   },
 }
 
